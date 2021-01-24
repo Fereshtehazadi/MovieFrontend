@@ -17,17 +17,13 @@ namespace APILibrary.Processors
             {
                 url = $"Movies?year={year}&title={title}";
             }
-            else if (year > 0 && title.Length == 0)
-            {
-                url = $"Movies?year={year}";
-            }
             else if (year == 0 && title.Length > 0)
             {
                 url = $"Movies?title={title}";
             }
             else
             {
-                throw new Exception("You have to specify year or title") ;
+               throw new Exception("You have to specify title") ;
             }
             using (
                 HttpResponseMessage response = await APIHelper.ApiClient.GetAsync(url) )

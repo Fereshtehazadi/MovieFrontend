@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Windows;
 
 namespace MovieWPF.ViewModels
 {
@@ -17,7 +19,7 @@ namespace MovieWPF.ViewModels
         {
             APIHelper.InitializeClient();
         }
-        private string _searchTitle;
+        private string _searchTitle="";
 
         public string SearchTitle
         {
@@ -41,7 +43,20 @@ namespace MovieWPF.ViewModels
         // körs när amnändare trycker på sökknappen 
         public async void SearchButton()
         {
-            await LoadMovie();  
+            try
+            {
+                await LoadMovie();
+            }
+            //catch (HttpException e)
+            //{
+            //    MessageBox.Show(e.Message, "Movie", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Movie", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+           
         }
 
 
