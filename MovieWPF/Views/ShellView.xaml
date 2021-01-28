@@ -37,10 +37,15 @@
                  MinWidth="200" Margin="10,0,0,0"/>
         <!-- row 2 , Column 1-3 -->
         <Button x:Name="SearchButton" Content="Search" Grid.Row="2" Grid.Column="1" Width="200"
-                Margin="0,10,0,0" Grid.ColumnSpan="3"/>
+                Margin="0,10,0,10" Grid.ColumnSpan="3"/>
         <!-- row 3 , Column 1-5 -->
-        <DataGrid x:Name="Movies" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5">
-            
+        <DataGrid x:Name="Movies" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" 
+                  AlternatingRowBackground="Lavender" CanUserAddRows="False" IsReadOnly="True" 
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}"/>
+                <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}"/>            
+            </DataGrid.Columns>
         </DataGrid>
 
     </Grid>
